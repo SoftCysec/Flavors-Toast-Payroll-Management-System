@@ -13,6 +13,9 @@ class Employee_details(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     def __str__(self):
         return str(self.user)
+    
+    class Meta:
+        verbose_name_plural = 'Employee_details'
         
 class Attendance(models.Model):
     No_of_Days_Punched_in = models.IntegerField(default=0)
@@ -21,6 +24,9 @@ class Attendance(models.Model):
  
     def __str__(self):
         return str(self.user)
+    
+    class Meta:
+        verbose_name_plural = 'Attendance'
     
 class Leave(models.Model):
     Reason = models.CharField(max_length=20, default = 'None')
@@ -31,6 +37,9 @@ class Leave(models.Model):
  
     def __str__(self):
         return str(self.user)
+    
+    class Meta:
+        verbose_name_plural = 'Leave'
 
         
 class Duty_Schedule(models.Model):
@@ -42,6 +51,9 @@ class Duty_Schedule(models.Model):
  
     def __str__(self):
         return str(self.user)
+    
+    class Meta:
+        verbose_name_plural = 'Duty_Schedules'
  
 class Salary_mgmt(models.Model):
     
@@ -58,6 +70,9 @@ class Salary_mgmt(models.Model):
 
     def __str__(self):
         return str(self.user)
+    
+    class Meta:
+        verbose_name_plural = 'Salary_mgmt'
  
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -75,6 +90,9 @@ class Profile(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+            
+    class Meta:
+        verbose_name_plural = 'Profiles'
 
 class announcements(models.Model):
     content = models.TextField()
@@ -87,6 +105,9 @@ class announcements(models.Model):
 
     def __str__(self):
         return str(self.date_posted)
+    
+    class Meta:
+        verbose_name_plural = 'Announcements'
 
 class ex_employee(models.Model):
     
@@ -96,3 +117,5 @@ class ex_employee(models.Model):
     def __str__(self):
         return str(self.name)
 
+    class Meta:
+        verbose_name_plural = 'Ex_Employees'
