@@ -1,13 +1,17 @@
 from django.urls import path
-from . import views # . is the current directory
+
+from . import views
+
 
 urlpatterns = [
-    path('', views.home, name='payroll-home'),
-    path('about/', views.about, name='payroll-about'),
-    path('profile/', views.profile, name='profile'), #profile
-    path('attendance/', views.attendance_leave, name='attendance'),
-    path('salary/', views.salary, name='salary'),
-    path('confirmdelete/', views.deletetrigger, name = 'confirmdelete'),
-    path('deleted/', views.delete, name = 'deleted')
-
+    path('',views.login, name='login'),
+    path("logout", views.logout_request, name= "logout"),
+    path('home/',views.home, name='home'),
+    path('employee/',views.employee, name='employee'),
+    path('createEmployee/',views.createEmployee, name='createEmployee'),
+    path('jobs/',views.jobs, name='jobs'),
+    path('createJobs/',views.createJobs, name='createJobs'),
+    path('deductions/',views.deductions, name='deductions'),
+    path('createDeductions/',views.createDeductions, name='createDeductions'),
+    path('salaryReport/',views.salaryReport, name='salaryReport'),
 ]

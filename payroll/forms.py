@@ -1,10 +1,40 @@
 from django import forms
-from django.contrib.auth.models import User
-
-from .models import Profile
+from .models import Employee, Jobs, Deductions
 
 
-class ProfileUpdateForm(forms.ModelForm):
+# creating a form
+
+
+class EmployeesForm(forms.ModelForm):
+    
     class Meta:
-        model = Profile
-        fields = ['image']
+        model = Employee
+        fields = [
+            "empID",
+            "lastName",
+            "firstName",
+            "middleName",
+            "email",
+            "contactNo",
+            "jobDesc"
+        ]
+    jobDesc = forms.ModelChoiceField(label="Job",queryset=Jobs.objects.all().values_list('jobDesc',flat=True),to_field_name="jobDesc")
+    
+
+class JobsForm(forms.ModelForm):
+    class Meta:
+        model = Jobs
+        fields = [
+            "jobID",
+            "jobDesc",
+            "salary",
+        ]
+
+class DeductionsForm(forms.ModelForm):
+    class Meta:
+        model = Deductions
+        fields = [
+            "deductID",
+            "deductDesc",
+            "deduct",
+        ]
